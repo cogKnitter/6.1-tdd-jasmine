@@ -14,5 +14,8 @@
   "devDependencies": {
     "jasmine": "^2.4.1",
     "jsdom": "^9.1.0"
+  },
+  "browser": {
+    "GitHubQuery": "lib/GitHubQuery.js"
   }
 }
