@@ -1,9 +1,18 @@
 describe("Github Query", function(){
-  var GitHubQuery = require("../lib/GitHubQuery.js");
+  var GitHubQuery = require("../lib/GitHubQuery.js"),
+      jsdom = require("jsdom");
+
+
   var gitHubQuery;
+  var response = {
+    name: "something"
+  }
 
   beforeEach(function (){
     gitHubQuery = new GitHubQuery();
+    document = jsdom.jsdom('<body></body>');
+    window = document.defaultView;
+    $ = require('jquery');
   });
 
   it("Parses login", function (){
@@ -11,8 +20,8 @@ describe("Github Query", function(){
   });
 
   it("Parses name", function (){
-    gitHubQuery.getData();
-    expect(gitHubQuery.parsedData.name).toEqual("Mariah");
+    gitHubQuery.onSuccess(response);
+    expect(gitHubQuery.parsedData.name).toEqual(response.name);
   });
   it("Parses location", function (){
 
