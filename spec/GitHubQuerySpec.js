@@ -1,5 +1,5 @@
 describe("Github Query", function(){
-  var GitHubQuery = reqire("../lib/GitHubQuery.js");
+  var GitHubQuery = require("../lib/GitHubQuery.js");
   var gitHubQuery;
 
   beforeEach(function (){
@@ -11,7 +11,8 @@ describe("Github Query", function(){
   });
 
   it("Parses name", function (){
-
+    gitHubQuery.getData();
+    expect(gitHubQuery.parsedData.name).toEqual("Mariah");
   });
   it("Parses location", function (){
 
