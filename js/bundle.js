@@ -6,6 +6,8 @@ function GitHubQuery(){
 
   }
 
+  var success = {}
+
   gitHubQuery.onSuccess = function (response){
     gitHubQuery.parsedData.name = response.name;
     gitHubQuery.parsedData.location = response.location;
@@ -13,9 +15,8 @@ function GitHubQuery(){
     gitHubQuery.parsedData.avatar_url = response.avatar_url;
     gitHubQuery.parsedData.login = response.login;
     gitHubQuery.parsedData.html_url = response.html_url
-
-
   };
+
 
   gitHubQuery.getData = function (){
 
@@ -23,9 +24,14 @@ function GitHubQuery(){
       type: "GET",
       url: "https://api.github.com/users/cogknitter",
       dataType: "json",
-      success: success.onSuccess
+      success: function (response) {
+        success.onSuccess;
+        console.log(response.name, response.location, response.public_repos, response.avatar_url, response.login, response.html_url)
+      }
 
     })
+
+
   }
 }
 
