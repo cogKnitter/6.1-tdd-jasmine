@@ -7,7 +7,8 @@ describe("Github Query", function(){
   var response = {
     name: "something",
     location: "a place",
-    public_repos: "10"
+    public_repos: "10",
+    avatar_url: "https://somewhere.com"
   }
 
   beforeEach(function (){
@@ -34,7 +35,8 @@ describe("Github Query", function(){
     expect(gitHubQuery.parsedData.public_repos).toEqual(response.public_repos)
   });
   it("Parses avatar url", function (){
-
+    gitHubQuery.onSuccess(response);
+    expect(gitHubQuery.parsedData.avatar_url).toEqual(response.avatar_url)
   });
   it("Parses html url", function (){
 
