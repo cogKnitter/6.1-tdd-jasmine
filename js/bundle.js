@@ -10,7 +10,8 @@ function GitHubQuery(){
     gitHubQuery.parsedData.name = response.name;
     gitHubQuery.parsedData.location = response.location;
     gitHubQuery.parsedData.public_repos = response.public_repos;
-    gitHubQuery.parsedData.avatar_url = response.avatar_url
+    gitHubQuery.parsedData.avatar_url = response.avatar_url;
+    gitHubQuery.parsedData.login = response.login
   };
 
   gitHubQuery.getData = function (){

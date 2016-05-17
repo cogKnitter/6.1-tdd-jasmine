@@ -9,7 +9,8 @@ describe("Github Query", function(){
     location: "a place",
     public_repos: "10",
     avatar_url: "https://somewhere.com",
-    login: "username"
+    login: "username",
+    html_url: "https://somewhere.com"
   }
 
   beforeEach(function (){
@@ -33,13 +34,14 @@ describe("Github Query", function(){
   });
   it("Parses number of repos", function (){
     gitHubQuery.onSuccess(response);
-    expect(gitHubQuery.parsedData.public_repos).toEqual(response.public_repos)
+    expect(gitHubQuery.parsedData.public_repos).toEqual(response.public_repos);
   });
   it("Parses avatar url", function (){
     gitHubQuery.onSuccess(response);
-    expect(gitHubQuery.parsedData.avatar_url).toEqual(response.avatar_url)
+    expect(gitHubQuery.parsedData.avatar_url).toEqual(response.avatar_url);
   });
   it("Parses html url", function (){
-
+    gitHubQuery.onSuccess(response);
+    expect(gitHubQuery.parsedData.html_url).toEqual(response.html_url);
   });
 });
