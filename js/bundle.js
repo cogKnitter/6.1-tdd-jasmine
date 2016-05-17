@@ -9,7 +9,8 @@ function GitHubQuery(){
   gitHubQuery.onSuccess = function (response){
     gitHubQuery.parsedData.name = response.name;
     gitHubQuery.parsedData.location = response.location;
-    gitHubQuery.parsedData.public_repos = response.public_repos
+    gitHubQuery.parsedData.public_repos = response.public_repos;
+    gitHubQuery.parsedData.avatar_url = response.avatar_url
   };
 
   gitHubQuery.getData = function (){

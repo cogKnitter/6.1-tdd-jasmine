@@ -8,7 +8,8 @@ describe("Github Query", function(){
     name: "something",
     location: "a place",
     public_repos: "10",
-    avatar_url: "https://somewhere.com"
+    avatar_url: "https://somewhere.com",
+    login: "username"
   }
 
   beforeEach(function (){
@@ -19,9 +20,9 @@ describe("Github Query", function(){
   });
 
   it("Parses login", function (){
-
+    gitHubQuery.onSuccess(response);
+    expect(gitHubQuery.parsedData.login).toEqual(response.login);
   });
-
   it("Parses name", function (){
     gitHubQuery.onSuccess(response);
     expect(gitHubQuery.parsedData.name).toEqual(response.name);
