@@ -5,7 +5,8 @@ describe("Github Query", function(){
 
   var gitHubQuery;
   var response = {
-    name: "something"
+    name: "something",
+    location: "a place"
   }
 
   beforeEach(function (){
@@ -24,7 +25,8 @@ describe("Github Query", function(){
     expect(gitHubQuery.parsedData.name).toEqual(response.name);
   });
   it("Parses location", function (){
-
+    gitHubQuery.onSuccess(response);
+    expect(gitHubQuery.parsedData.location).toEqual(response.location);
   });
   it("Parses number of repos", function (){
 
