@@ -3,7 +3,7 @@ function GitHubQuery(){
   var gitHubQuery = this;
 
   gitHubQuery.parsedData = {
-    name: ""
+
   }
 
   gitHubQuery.onSuccess = function (response){
@@ -11,7 +11,10 @@ function GitHubQuery(){
     gitHubQuery.parsedData.location = response.location;
     gitHubQuery.parsedData.public_repos = response.public_repos;
     gitHubQuery.parsedData.avatar_url = response.avatar_url;
-    gitHubQuery.parsedData.login = response.login
+    gitHubQuery.parsedData.login = response.login;
+    gitHubQuery.parsedData.html_url = response.html_url
+
+
   };
 
   gitHubQuery.getData = function (){
@@ -30,7 +33,17 @@ module.exports = GitHubQuery;
 
 },{}],2:[function(require,module,exports){
 $ = require("jquery"),
-    gitHubQuery = require("../lib/GitHubQuery.js")
+    GitHubQuery = require("../lib/GitHubQuery.js")
+
+$(function (){
+
+
+var gitHubQuery = new GitHubQuery();
+
+  gitHubQuery.getData();
+  gitHubQuery.onSuccess();
+
+});
 
 },{"../lib/GitHubQuery.js":1,"jquery":3}],3:[function(require,module,exports){
 /*!
