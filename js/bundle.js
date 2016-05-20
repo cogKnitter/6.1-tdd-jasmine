@@ -2,11 +2,12 @@
 function GitHubQuery(){
   var gitHubQuery = this;
 
+
+
   gitHubQuery.parsedData = {
 
   }
 
-  var success = {}
 
   gitHubQuery.onSuccess = function (response){
     gitHubQuery.parsedData.name = response.name;
@@ -15,7 +16,18 @@ function GitHubQuery(){
     gitHubQuery.parsedData.avatar_url = response.avatar_url;
     gitHubQuery.parsedData.login = response.login;
     gitHubQuery.parsedData.html_url = response.html_url
+
+    $("[data-js='resultsSection']").append(`
+      <h2 class="gh-user" data-js="ghUser-name">${response.name}</h2>
+      <h3 class="user__login" data-js="ghUser-login">${response.login}</h3>
+      <h3 class="user__location" data-js="ghUser-location">${response.location}</h3>
+      <h3 class="user__pub-repos" data-js="ghUser-pubRepos">${response.public_repos}</h3>
+      <img class="user__avatar" data-js="ghUser-avatar" src="${response.avatar_url}"/>
+      <h3 class="user__url" data-js="ghUser-url">${response.html_url}</h3>
+      `)
   };
+
+
 
 
   gitHubQuery.getData = function (){
@@ -24,11 +36,7 @@ function GitHubQuery(){
       type: "GET",
       url: "https://api.github.com/users/cogknitter",
       dataType: "json",
-      success: function (response) {
-        success.onSuccess;
-        console.log(response.name, response.location, response.public_repos, response.avatar_url, response.login, response.html_url)
-      }
-
+      success: gitHubQuery.onSuccess
     })
 
 
@@ -47,8 +55,7 @@ $(function (){
 var gitHubQuery = new GitHubQuery();
 
   gitHubQuery.getData();
-  gitHubQuery.onSuccess();
-
+  
 });
 
 },{"../lib/GitHubQuery.js":1,"jquery":3}],3:[function(require,module,exports){
